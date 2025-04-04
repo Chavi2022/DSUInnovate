@@ -3,6 +3,7 @@ import "../css/ChatWindow.css"
 import Navbar from './Navbar'
 import Message from './Message';
 import logo from "../assets/images/logo.png"
+import ChatInput from './ChatInput';
 
 type MessagesObject = {
     [key: string]: {
@@ -14,43 +15,60 @@ interface ChatWindowProps {
     messages: MessagesObject
 }
 
-function hasValidMessage(messages: MessagesObject): boolean {
-    console.log(Object.keys(messages).length)
-    return (
-        Object.keys(messages).length === 0
-    )
 
-}
+function ChatWindow({ messages: initialMessages }: ChatWindowProps) {
+    const [messages, setMessages] = useState<MessagesObject>(initialMessages);
+    // Adding comment so I can commit again.
 
-function loadChatHistory(messages: MessagesObject) {
-    return (
-        Object.keys(messages).map((messageKey) => {
-            const message = messages[messageKey]
-            return (
-                <>
-                    <Message text={message.text} isSender={message.isSender} />
-                </>
-            )
-        }))
-}
+    function hasValidMessage(messages: MessagesObject): boolean {
+        return (
+            Object.keys(messages).length > 0
 
-function loadNewChat() {
-    return (
-        <>
-            <img src={logo} className='newChatImage' />
-            <p className='welcomeMessage'>
-                Hello, how can I help you today?
-            </p>
-        </>
-    )
-}
-function ChatWindow({ messages }: ChatWindowProps) {
+        )
+
+    }
+
+    function loadChatHistory(messages: MessagesObject) {
+        return (
+            Object.keys(messages).map((messageKey) => {
+                const message = messages[messageKey]
+                return (
+                    <>
+                        <Message text={message.text} isSender={message.isSender} />
+                    </>
+                )
+            }))
+    }
+
+    function loadNewChat() {
+        return (
+            <>
+                <img src={logo} className='newChatImage' />
+                <p className='welcomeMessage'>
+                    Hello, how can I help you today?
+                </p>
+            </>
+        )
+    }
+
+    function handleNewMessage(newText: string) {
+        const newMessageKey = `message${Object.keys(messages).length + 1}`;
+        const newMessage = { text: newText, isSender: true };
+
+        setMessages(prev => ({
+            ...prev,
+            [newMessageKey]: newMessage
+        }));
+    }
 
     return (
         <>
             <div className='chatWindow'>
                 <Navbar />
-                {(hasValidMessage(messages)) ? loadNewChat() : loadChatHistory(messages)}
+                <div className="chatHistory">
+                    {hasValidMessage(messages) ? loadChatHistory(messages) : loadNewChat()}
+                </div>
+                <ChatInput onSend={handleNewMessage} />
             </div >
 
         </>

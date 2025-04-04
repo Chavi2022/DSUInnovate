@@ -1,7 +1,8 @@
 .chatWindow {
 
     width: 500px;
-    height: 100;
+    min-width: 500px;
+    height: 97vh;
     min-height: 700px;
     margin: auto;
     background-color: #689167ff;
@@ -10,7 +11,13 @@
     border-bottom: rgb(109, 89, 68) 7px solid;
     border-right: rgb(87, 67, 46) 7px solid;
     border-left: rgb(109, 89, 68) 7px solid;
+    resize: both;
+    /* Allows both horizontal and vertical resizing */
     overflow: hidden;
+    /* Allows scrolling and enables resize */
+    overflow-x: hidden;
+    /* Optional: Hide horizontal overflow */
+
 }
 
 .newChatImage {
@@ -20,4 +27,81 @@
 
 .welcomeMessage {
     color: black;
+}
+
+/* Container for the chat input */
+.chatInputContainer {
+    display: flex;
+    align-items: center;
+    /* Vertically center the input and button */
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-top: 2px solid rgb(87, 67, 46);
+    /* Matching the theme */
+    background-color: #689167ff;
+    /* Lighter green to complement the chat window */
+    border-radius: 0 0 25px 25px;
+    /* Rounded bottom corners */
+    position: sticky;
+    bottom: 0;
+    /* Fix it to the bottom */
+    margin-bottom: 0;
+}
+
+.chatHistory {
+    flex-grow: 1;
+    min-height: 67%;
+    /* Adjust this as needed */
+    /* Makes chat scrollable */
+    padding: 20px;
+    box-sizing: border-box;
+    /* Allows both horizontal and vertical resizing */
+    overflow: scroll;
+    /* Allows scrolling and enables resize */
+    overflow-x: hidden;
+    /* Optional: Hide horizontal overflow */
+
+}
+
+/* The input field styling */
+.chatInputField {
+    width: 80%;
+    /* Adjust the width of the input field */
+    padding: 12px;
+    border-radius: 25px;
+    border: 2px solid rgb(109, 89, 68);
+    /* Darker border to match theme */
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+    margin-right: 10px;
+    background-color: #f7f7f7;
+    /* Lighter background for readability */
+    color: #333;
+    /* Darker text color for visibility */
+}
+
+/* Button styling */
+.chatSendButton {
+    width: 15%;
+    /* Adjust the width of the send button */
+    background-color: rgb(87, 67, 46);
+    /* Darker brown to match the theme */
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Optional: Add a hover effect to the button */
+.chatSendButton:hover {
+    background-color: rgb(109, 89, 68);
+    /* Lighter brown for hover effect */
+    transition: background-color 0.3s ease;
 }
