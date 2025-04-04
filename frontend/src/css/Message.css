@@ -1,0 +1,33 @@
+.messageContainer {
+    flex-direction: row;
+    display: flex;
+    margin: 5px 20px;
+}
+
+.pfp {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    display: block;
+}
+
+.textContainer {
+    background-color: aliceblue;
+    border-radius: 5px 0 5px 5px;
+    padding: 0px 12px;
+    border: transparent 10px;
+    margin: 10px 5px;
+    min-width: 200px;
+}
+
+.messageText {
+    display: block;
+}
+
+.outgoingMessage {
+    justify-content: end;
+}
+
+.incomingMessage>.textContainer {
+    border-radius: 0 5px 5px 5px;
+}

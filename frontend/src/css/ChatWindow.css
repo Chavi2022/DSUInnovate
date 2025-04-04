@@ -1,0 +1,23 @@
+.chatWindow {
+
+    width: 500px;
+    height: 100;
+    min-height: 700px;
+    margin: auto;
+    background-color: #689167ff;
+    border-radius: 25px;
+    border-top: rgb(87, 67, 46) 7px solid;
+    border-bottom: rgb(109, 89, 68) 7px solid;
+    border-right: rgb(87, 67, 46) 7px solid;
+    border-left: rgb(109, 89, 68) 7px solid;
+    overflow: hidden;
+}
+
+.newChatImage {
+    width: 100px;
+    height: 100px;
+}
+
+.welcomeMessage {
+    color: black;
+}
