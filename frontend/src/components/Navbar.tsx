@@ -1,20 +1,25 @@
 import React from 'react';
 import '../css/Navbar.css'
 import companyLogo from "../assets/images/logo.png"
+import languageIcon from "../assets/images/language icon.png"
+import audioIcon from "../assets/images/audio icon.png"
 
 const Navbar = () => {
     return (
         <nav className="navbar">
-            <h1 style={{
-                display: 'block',
-            }}>
-                <a href="/">SoilChat</a>
-            </h1>
-            <img src={companyLogo} width={70} height={70} style={{
-                verticalAlign: 'middle',
-                padding: '10, 30, 10, 30 ',
-            }} />
-        </nav>
+            <div className='titleContainer'>
+                <img src={companyLogo} className="icon" />
+                <h4 style={{
+                    display: 'block',
+                }}>
+                    <a href="/">SoilChat AI</a>
+                </h4>
+            </div>
+            <div className='otherIcons'>
+                <span className="material-icons icons">language</span>
+                <span className="material-icons icons">volume_up</span>
+            </div>
+        </nav >
     );
 };
 

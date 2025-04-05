@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../css/ChatWindow.css";
+import "../css/ChatInput.css"
+
 // Define the prop types for ChatInput
 interface ChatInputProps {
     onSend: (message: string) => void; // Function that takes a string and returns void
@@ -25,7 +27,7 @@ function ChatInput({ onSend }: ChatInputProps) {
                 placeholder="Type a message..."
             />
             <button className="chatSendButton" onClick={handleSendMessage}>
-                Send
+                <span className="material-icons">send</span>
             </button>
         </div>
     );

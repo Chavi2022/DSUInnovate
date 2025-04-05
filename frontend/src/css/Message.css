@@ -1,7 +1,15 @@
 .messageContainer {
-    flex-direction: row;
     display: flex;
-    margin: 5px 20px;
+    flex-direction: row;
+    align-items: baseline;
+    /* Ensures items are vertically centered */
+    margin: 5px auto;
+    ;
+}
+
+.messageContainer.outgoingMessage {
+    flex-direction: row-reverse;
+    /* Flip for outgoing messages */
 }
 
 .pfp {
@@ -9,25 +17,64 @@
     height: 50px;
     border-radius: 100%;
     display: block;
+    margin: 5px;
+    /* Adjust the margin if needed */
 }
 
 .textContainer {
-    background-color: aliceblue;
-    border-radius: 5px 0 5px 5px;
-    padding: 0px 12px;
+    display: flex;
+    flex-direction: column;
+    /* Keeps text aligned vertically */
+    justify-content: center;
+    /* Vertically centers content */
+    align-items: center;
+    /* Aligns text to the left */
+    border-radius: 8px 0 8px 8px;
+    padding: 10px 12px;
     border: transparent 10px;
-    margin: 10px 5px;
-    min-width: 200px;
+    margin: 5px 10px;
+    min-width: 180px;
+    background-color: rgb(0, 88, 27);
+    max-width: 80%;
+    /* Ensures the message does not stretch too far */
+    box-shadow: 3px 3px rgb(0, 24, 9);
+
 }
 
 .messageText {
-    display: block;
+    color: rgb(0, 0, 0);
 }
 
-.outgoingMessage {
-    justify-content: end;
+.outgoingMessage>.textContainer>.messageText {
+    justify-content: flex-end;
+    color: rgb(255, 255, 255);
+
 }
 
-.incomingMessage>.textContainer {
-    border-radius: 0 5px 5px 5px;
+.incomingMessage>.textIconContainer>.textContainer {
+    background-color: rgb(182, 182, 182);
+    border-radius: 0 8px 8px 8px;
+    align-items: center;
+    box-shadow: -3px 3px rgb(94, 94, 94);
+
+
+}
+
+.textIconContainer {
+    display: flex;
+    flex-direction: column;
+    /* Keeps the profile pic and text stacked */
+}
+
+.material-icons {
+    justify-content: flex-start;
+}
+
+.audioPlayerContainer {
+    margin-left: 10px;
+    display: flex;
+    justify-content: flex-start;
+    /* Aligns items horizontally */
+    align-items: center;
+    /* Aligns items vertically */
 }

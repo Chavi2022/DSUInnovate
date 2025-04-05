@@ -12,10 +12,10 @@ function Message({ text, isSender }: MessageProps) {
         return (
             <>
                 <div className='messageContainer outgoingMessage'>
+                    <img src={pfp1} className="pfp" />
                     <div className="textContainer">
                         <p className="messageText">{text}</p>
                     </div>
-                    <img src={pfp1} className="pfp" />
                 </div>
             </>
         )
@@ -26,10 +26,17 @@ function Message({ text, isSender }: MessageProps) {
                 <>
                     <div className='messageContainer incomingMessage'>
                         <img src={logo} className="pfp" />
-                        <div className="textContainer">
-                            <p className="messageText">{text}</p>
+                        <div className="textIconContainer">
+                            <div className="textContainer">
+                                <p className="messageText">{text}</p>
+                            </div>
+                            <div className="audioPlayerContainer">
+                                <span className="material-icons ">play_arrow</span>
+                                <span style={{
+                                    marginLeft: 15
+                                }}>Play Audio</span>
+                            </div>
                         </div>
-
                     </div>
                 </>
             </>

@@ -51,7 +51,7 @@
   justify-content: center;
   width: 600px;
   height: 600px;
-  background-image: radial-gradient(rgb(44, 73, 44, 0), rgb(86, 129, 86, 1));
+  background-image: radial-gradient(rgba(166, 202, 166, 20), rgb(86, 129, 86, 1));
   border-radius: 10000px;
   overflow: hidden;
 }
