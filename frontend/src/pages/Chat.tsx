@@ -12,7 +12,7 @@ interface ChatboxProps {
     databaseLink: string
 }
 
-function ChatPage({ messages, databaseLink }: ChatboxProps) {
+function Chat({ messages, databaseLink }: ChatboxProps) {
     return (
         <>
 
@@ -22,4 +22,4 @@ function ChatPage({ messages, databaseLink }: ChatboxProps) {
     )
 }
 
-export default ChatPage
+export default Chat

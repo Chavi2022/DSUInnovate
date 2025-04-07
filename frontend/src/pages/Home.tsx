@@ -32,6 +32,7 @@ function Home() {
                     <img src={companyLogo} className='icon' />
                 </div>
                 <button className='startButton' onClick={() => { navigate("/chat") }}>Start Chat</button>
+                <button className='startButton' onClick={() => { navigate("/video") }}>Learn</button>
             </div>
         </>
     )
