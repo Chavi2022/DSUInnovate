@@ -19,7 +19,6 @@ interface ChatWindowProps {
 
 function ChatWindow({ databaseLink, messages: initialMessages }: ChatWindowProps) {
     const [messages, setMessages] = useState<MessagesObject>(initialMessages);
-    // Adding comment so I can commit again.
 
     useEffect(() => { // UNTESTED
         const socket = new WebSocket(`$databaseLink`);
@@ -37,7 +36,7 @@ function ChatWindow({ databaseLink, messages: initialMessages }: ChatWindowProps
                     }));
                 }
             } catch (err) {
-                console.error("Invalid incoming message", err);
+                console.error("This is an invalid message", err);
             }
         });
         // Clean up on unmount
