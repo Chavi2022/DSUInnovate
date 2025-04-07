@@ -21,27 +21,21 @@ function ChatWindow({ databaseLink, messages: initialMessages }: ChatWindowProps
     const [messages, setMessages] = useState<MessagesObject>(initialMessages);
 
     useEffect(() => { // UNTESTED
-        const socket = new WebSocket(`$databaseLink`);
-        socket.addEventListener("message", (event) => {
-            try {
-                const data = JSON.parse(event.data);
-                if (data && typeof data.text === "string") {
-                    const newKey = `message${Object.keys(messages).length + 1}`;
-                    setMessages((prev) => ({
-                        ...prev,
-                        [newKey]: {
-                            text: data.text,
-                            isSender: false
-                        }
-                    }));
-                }
-            } catch (err) {
-                console.error("This is an invalid message", err);
-            }
-        });
-        // Clean up on unmount
-        return () => socket.close();
-    }, []);
+        fetch(databaseLink)
+            .then((res) => res.json())
+            .then((data) => {
+                const formatted: MessagesObject = {};
+                data.forEach((msg: any, index: number) => {
+                    formatted[`message${index + 1}`] = {
+                        text: msg.text,
+                        isSender: msg.isSender,
+                    };
+                });
+                setMessages(formatted);
+            })
+            .catch((err) => console.error("Failed to load messages:", err));
+    }, [databaseLink]);
+
 
     function hasValidMessage(messages: MessagesObject): boolean {
         return (

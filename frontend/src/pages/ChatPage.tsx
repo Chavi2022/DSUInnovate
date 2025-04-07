@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react'
 import '../css/App.css'
-import Navbar from '../components/Navbar'
 import ChatWindow from '../components/ChatWindow'
 
 type MessagesObject = {
