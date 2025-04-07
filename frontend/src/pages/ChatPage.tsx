@@ -10,14 +10,15 @@ type MessagesObject = {
     };
 };
 interface ChatboxProps {
-    messages: MessagesObject
+    messages: MessagesObject,
+    databaseLink: string
 }
 
-function ChatPage({ messages }: ChatboxProps) {
+function ChatPage({ messages, databaseLink }: ChatboxProps) {
     return (
         <>
 
-            <ChatWindow messages={messages} />
+            <ChatWindow messages={messages} databaseLink={databaseLink} />
 
         </>
     )

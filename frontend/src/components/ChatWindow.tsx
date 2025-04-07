@@ -12,13 +12,37 @@ type MessagesObject = {
     };
 };
 interface ChatWindowProps {
-    messages: MessagesObject
+    messages: MessagesObject,
+    databaseLink: string
 }
 
 
-function ChatWindow({ messages: initialMessages }: ChatWindowProps) {
+function ChatWindow({ databaseLink, messages: initialMessages }: ChatWindowProps) {
     const [messages, setMessages] = useState<MessagesObject>(initialMessages);
     // Adding comment so I can commit again.
+
+    useEffect(() => { // UNTESTED
+        const socket = new WebSocket(`$databaseLink`);
+        socket.addEventListener("message", (event) => {
+            try {
+                const data = JSON.parse(event.data);
+                if (data && typeof data.text === "string") {
+                    const newKey = `message${Object.keys(messages).length + 1}`;
+                    setMessages((prev) => ({
+                        ...prev,
+                        [newKey]: {
+                            text: data.text,
+                            isSender: false
+                        }
+                    }));
+                }
+            } catch (err) {
+                console.error("Invalid incoming message", err);
+            }
+        });
+        // Clean up on unmount
+        return () => socket.close();
+    }, []);
 
     function hasValidMessage(messages: MessagesObject): boolean {
         return (

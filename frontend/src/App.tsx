@@ -30,7 +30,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/chat" element={<ChatPage messages={testMessages} />} />
+          <Route path="/chat" element={<ChatPage messages={testMessages} databaseLink='' />} />
         </Routes>
       </BrowserRouter>
     </>
