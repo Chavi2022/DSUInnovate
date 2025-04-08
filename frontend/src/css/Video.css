@@ -1,0 +1,95 @@
+.video {
+    display: flex;
+    flex-direction: row;
+    background-color: #c9c9c9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 400px;
+    margin: 0px;
+}
+
+.video:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 20.15);
+}
+
+.thumbnail {
+    width: 100px;
+}
+
+.video h3 {
+    font-size: 1.1rem;
+    margin: 0.75rem 1rem 0.25rem;
+    color: #333;
+}
+
+.video p {
+    font-size: 0.9rem;
+    margin: 0 1rem 1rem;
+    color: #868686;
+}
+
+.first-video>.thumbnail {
+    width: 100%;
+    /* Fill the width of the container */
+    max-width: 600px;
+    max-height: 400px;
+    object-fit: cover;
+    /* Make the image fill the space without distorting */
+    border-radius: 10px;
+    /* Rounded corners for aesthetics */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Optional: Featured style for the first video */
+.first-video {
+    border: 2px solid #facc15;
+    /* amber-400 */
+    background-color: #fef9c3;
+    /* light yellow */
+    max-width: 600px;
+    flex: 1 1 100%;
+    /* First video takes up the full row */
+    flex-direction: column;
+}
+
+.first-video-container {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.video-results {
+    display: flex;
+    flex-wrap: wrap;
+    /* allows items to wrap to next row */
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+
+.videos-container {
+    width: 350px;
+    min-width: 350px;
+    height: 700px;
+    min-height: 700px;
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    border-radius: 25px;
+    border-top: rgb(87, 67, 46) 7px solid;
+    border-bottom: rgb(109, 89, 68) 7px solid;
+    border-right: rgb(87, 67, 46) 7px solid;
+    border-left: rgb(109, 89, 68) 7px solid;
+    resize: both;
+    /* Allows both horizontal and vertical resizing */
+    overflow: hidden;
+    /* Allows scrolling and enables resize */
+    overflow-x: hidden;
+    /* Optional: Hide horizontal overflow */
+    overflow-y: scroll;
+}
