@@ -6,7 +6,7 @@ function Videos() {
     return (
         <>
             <Navbar />
-            <VideoPlaylist videoDatabaseLink="https://localhost8080/videos" />
+            <VideoPlaylist videoDatabaseLink="http://localhost:5000/videos" />
         </>
     )
 }

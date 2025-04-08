@@ -10,9 +10,17 @@ app.use(express.json()); // This is important to handle JSON payloads
 
 // Dummy data
 const videos = [
-    { id: 1, title: "Intro to Soil Health", tags: ["soil", "organic"] },
-    { id: 2, title: "Advanced Soil Techniques", tags: ["soil", "advanced"] },
-    { id: 3, title: "Beginner's Guide to Gardening", tags: ["gardening", "beginner"] },
+    { id: 1, title: "Intro to Soil Health", tags: ["soil health", "organic"], thumbnailUrl: "https://picsum.photos/200?random=1" },
+    { id: 2, title: "Advanced Soil Techniques", tags: ["soil health", "advanced"], thumbnailUrl: "https://picsum.photos/200?random=2" },
+    { id: 3, title: "Beginner's Guide to Gardening", tags: ["gardening", "beginner"], thumbnailUrl: "https://picsum.photos/200?random=3" },
+    { id: 4, title: "Composting 101", tags: ["compost", "soil health"], thumbnailUrl: "https://picsum.photos/200?random=4" },
+    { id: 5, title: "Cover Cropping Explained", tags: ["crop rotation", "soil health"], thumbnailUrl: "https://picsum.photos/200?random=5" },
+    { id: 6, title: "Top 5 Gardening Tools", tags: ["gardening", "tools"], thumbnailUrl: "https://picsum.photos/200?random=6" },
+    { id: 7, title: "Soil Testing Methods", tags: ["soil health", "testing"], thumbnailUrl: "https://picsum.photos/200?random=7" },
+    { id: 8, title: "Urban Farming Techniques", tags: ["urban", "farming"], thumbnailUrl: "https://picsum.photos/200?random=8" },
+    { id: 9, title: "Intro to Hydroponics", tags: ["hydroponics", "advanced"], thumbnailUrl: "https://picsum.photos/200?random=9" },
+    { id: 10, title: "Building a Raised Bed", tags: ["gardening", "DIY"], thumbnailUrl: "https://picsum.photos/200?random=10" },
+
 ];
 
 // GET route to retrieve all videos

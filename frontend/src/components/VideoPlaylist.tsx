@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
 import Video from "./Video"
 import TopicTag from "./TopicTag";
+import "../css/Video.css"
 interface VideoItem {
     id: string;
     title: string;
@@ -15,17 +16,53 @@ interface VideoPlaylistProps {
 
 
 function VideoPlaylist({ videoDatabaseLink }: VideoPlaylistProps) {
-    const availableTags = ["All Topics", "Soil Health", "Crop Rotation",];
+    const availableTags = ["All Topics", "Soil Health", "Crop Rotation", "Gardening"];
     const [selectedTag, setSelectedTag] = useState<string | null>("All Topics");
     const [query, setQuery] = useState("");
     const [videos, setVideos] = useState<VideoItem[]>([]);
+    const [debouncedQuery, setDebouncedQuery] = useState(query);
 
+    // Debounce the query state
     useEffect(() => {
-        if (query.trim() === "") return;
+        const timer = setTimeout(() => {
+            setDebouncedQuery(query);
+        }, 500); // Delay 500ms after typing stops
+
+        // Cleanup the timeout if query changes again
+        return () => clearTimeout(timer);
+    }, [query]);
+
+    /*useEffect(() => {
+        const fetchVideos = async () => {
+            try {
+                let url = `${videoDatabaseLink}`;
+                const hasQuery = query.trim() !== "";
+    
+                if (hasQuery) {
+                    url += `?q=${query}`;
+                }
+    
+                if (selectedTag && selectedTag !== "All Topics") {
+                    // If there's already a `?q=`, use `&`, otherwise use `?`
+                    url += hasQuery ? `&tags_like=${selectedTag}` : `?tags_like=${selectedTag}`;
+                }
+    
+                const res = await fetch(url);
+                const data = await res.json();
+                setVideos(data);
+            } catch (err) {
+                console.error("Failed to fetch videos", err);
+            }
+        };
+    
+        fetchVideos();
+    }, [query, selectedTag]);
+     */
+    useEffect(() => {
 
         const fetchVideos = async () => {
             try {
-                let url = `http://localhost:5000/videos?q=${query}`;
+                let url = `${videoDatabaseLink}?q=${query}`;
                 if (selectedTag && selectedTag !== "All Topics") {
                     url += `&tags_like=${selectedTag}`;
                 }
@@ -61,9 +98,27 @@ function VideoPlaylist({ videoDatabaseLink }: VideoPlaylistProps) {
                     {videos.length === 0 ? (
                         <p>No videos found.</p>
                     ) : (
-                        videos.map((video) => (
+
+                        videos.map((video, index) => (
                             <>
-                                <Video key={video.id} id={video.id} thumbnailUrl={video.thumbnailUrl} title={video.title} description={video.description} />
+                                {index == 0 ? <div className="first-video-container">
+                                    <Video
+                                        key={index}
+                                        id={video.id}
+                                        thumbnailUrl={video.thumbnailUrl}
+                                        title={video.title}
+                                        description={video.description}
+                                        isFirst={index === 0}
+                                    />
+                                </div> : <Video
+                                    key={index}
+                                    id={video.id}
+                                    thumbnailUrl={video.thumbnailUrl}
+                                    title={video.title}
+                                    description={video.description}
+                                    isFirst={index === 0}
+                                />}
+
                             </>
                         ))
                     )}
